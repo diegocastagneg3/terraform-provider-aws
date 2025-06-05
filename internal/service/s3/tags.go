@@ -41,7 +41,7 @@ func bucketListTags(ctx context.Context, conn *s3.Client, identifier string, opt
 
 	output, err := conn.GetBucketTagging(ctx, input, optFns...)
 
-	if tfawserr.ErrCodeEquals(err, errCodeNoSuchTagSet, errCodeMethodNotAllowed, errCodeNotImplemented, errCodeXNotImplemented, errCodeUnsupportedOperation) {
+	if tfawserr.ErrCodeEquals(err, errCodeNoSuchTagSet, errCodeNoSuchBucketTagset, errCodeMethodNotAllowed, errCodeNotImplemented, errCodeXNotImplemented, errCodeUnsupportedOperation) {
 		return tftags.New(ctx, nil), nil
 	}
 	if err != nil {
@@ -103,7 +103,7 @@ func objectListTags(ctx context.Context, conn *s3.Client, bucket, key string, op
 
 	output, err := conn.GetObjectTagging(ctx, input, optFns...)
 
-	if tfawserr.ErrCodeEquals(err, errCodeNoSuchTagSet) {
+	if tfawserr.ErrCodeEquals(err, errCodeNoSuchTagSet, errCodeNoSuchBucketTagset) {
 		return tftags.New(ctx, nil), nil
 	}
 

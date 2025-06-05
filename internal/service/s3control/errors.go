@@ -20,4 +20,5 @@ const (
 	errCodeNoSuchOutpost                        = "NoSuchOutpost"
 	errCodeNoSuchPublicAccessBlockConfiguration = "NoSuchPublicAccessBlockConfiguration"
 	errCodeNoSuchTagSet                         = "NoSuchTagSet"
+	errCodeNoSuchBucketTagset					= "ERROR_NO_SUCH_BUCKET_TAGSET"
 )
